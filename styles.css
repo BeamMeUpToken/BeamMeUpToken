@@ -95,3 +95,67 @@ body {
 .glow-effect {
     animation: buttonGlow 1.5s ease-in-out infinite;
 } as needed */
+.space-station {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #0B1C3D 0%, #151515 100%);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #00F0FF, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.deck-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.deck-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.deck-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+.deck-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.deck-requirement {
+    color: #00F0FF;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.deck-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.deck-benefits li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.deck-benefits li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
