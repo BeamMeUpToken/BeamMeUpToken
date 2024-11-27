@@ -69,29 +69,38 @@ body {
 }
 
 /* Hero Section Styles */
+/* Hero Section Styles */
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh; /* Changed from height to min-height */
     background: linear-gradient(45deg, #0B1C3D, #1a1a2e);
     overflow: hidden;
-    padding-top: 80px; /* Added to account for fixed navbar */
-}
-
-.stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url('assets/stars.png');
-    animation: starsMove 100s linear infinite;
+    padding-top: 80px; /* Für die Navigation */
+    display: flex; /* Added */
+    align-items: center; /* Added */
+    justify-content: center; /* Added */
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding-top: 20vh;
+    width: 100%; /* Added */
+    padding: 2rem; /* Changed from padding-top */
 }
 
+/* Vergrößere den Abstand zwischen den Sections */
+section {
+    padding: 100px 0; /* Added */
+    margin: 0; /* Added */
+}
+
+/* Stelle sicher, dass die Sections voneinander getrennt sind */
+#spacestation, #tokenomics {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
 .animated-title {
     font-size: 4rem;
     background: linear-gradient(45deg, #00F0FF, #FFD700);
