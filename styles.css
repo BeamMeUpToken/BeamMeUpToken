@@ -158,4 +158,97 @@ body {
     position: absolute;
     left: 0;
     color: #FFD700;
+}/* Tokenomics Section */
+.tokenomics {
+    padding: 5rem 2rem;
+    background: linear-gradient(0deg, #0B1C3D 0%, #151515 100%);
+}
+
+.tokenomics-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tax-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tax-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+.tax-card h3 {
+    color: #00F0FF;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.tax-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tax-item {
+    position: relative;
+}
+
+.tax-percentage {
+    font-size: 1.2rem;
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+}
+
+.tax-label {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #00F0FF, #FFD700);
+    width: var(--width, 0%);
+    animation: progressFill 1s ease forwards;
+}
+
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: var(--width); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tokenomics-container {
+        flex-direction: column;
+    }
+    
+    .tax-card {
+        width: 100%;
+        max-width: none;
+    }
 }
