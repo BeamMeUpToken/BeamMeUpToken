@@ -32,18 +32,26 @@ function initializeProgressBars() {
 }
 
 // Animate elements when they come into view
+// Animate elements when they come into view
 function animateOnScroll() {
+    console.log('Animation function initialized'); // Debug log
+
     const elements = document.querySelectorAll('.deck-card, .tax-card');
+    console.log('Found elements:', elements.length); // Debug log
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            console.log('Element intersecting:', entry.isIntersecting); // Debug log
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '50px' // Added for earlier trigger
+    });
 
     elements.forEach(element => {
         element.style.opacity = '0';
@@ -53,6 +61,14 @@ function animateOnScroll() {
     });
 }
 
+// Make sure the function is called
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded'); // Debug log
+    initializeProgressBars();
+    animateOnScroll();
+    updateActiveNavLink();
+    initMobileNav();
+});
 // Add active class to navigation links based on scroll position
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section');
