@@ -55,4 +55,43 @@ body {
     margin-left: 1rem;
 }
 
-/* Add more styles as needed */
+/* Add more .hero {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(45deg, #0B1C3D, #1a1a2e);
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('assets/stars.png');
+    animation: starsMove 100s linear infinite;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 20vh;
+}
+
+.animated-title {
+    font-size: 4rem;
+    background: linear-gradient(45deg, #00F0FF, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+.token-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.glow-effect {
+    animation: buttonGlow 1.5s ease-in-out infinite;
+} as needed */
