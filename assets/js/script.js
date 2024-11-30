@@ -2,9 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialisiere alle Funktionen
     initParticleAnimation();
-    initCounterAnimation();
     initProgressBars();
-    initWalletConnection();
     initSmoothScroll();
     initScrollAnimations();
     initHeaderScroll();
@@ -75,7 +73,7 @@ function initParticleAnimation() {
     }
     
     // Partikel erstellen
-    const particles = Array.from({ length: 100 }, () => new Particle());
+    const particles = Array.from({ length: 50 }, () => new Particle());
     
     // Animation Loop
     function animate() {
@@ -92,101 +90,21 @@ function initParticleAnimation() {
     animate();
 }
 
-// Counter Animation
-function initCounterAnimation() {
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-    
-    const animateCounter = (counter, target) => {
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(() => animateCounter(counter, target), 1);
-        } else {
-            counter.innerText = target;
-        }
-    };
-
-    const startCounterAnimation = (counter) => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        animateCounter(counter, target);
-    };
-
-    // Intersection Observer für Counter
-    const observerOptions = {
-        threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startCounterAnimation(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    counters.forEach(counter => observer.observe(counter));
-}
-
 // Progress Bars Animation
 function initProgressBars() {
     const progressBars = document.querySelectorAll('.progress-bar');
     
-    const animateProgress = (bar) => {
-        const percentage = bar.getAttribute('data-percentage');
-        bar.style.setProperty('--width', `\${percentage}%`);
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateProgress(entry.target);
+                const percentage = entry.target.getAttribute('data-percentage');
+                entry.target.style.setProperty('--width', `\${percentage}%`);
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
 
     progressBars.forEach(bar => observer.observe(bar));
-}
-
-// Wallet Connection
-function initWalletConnection() {
-    const connectBtn = document.querySelector('.connect-btn');
-    
-    if (!connectBtn) return;
-    
-    connectBtn.addEventListener('click', async () => {
-        try {
-            if (typeof window.ethereum !== 'undefined') {
-                const accounts = await window.ethereum.request({
-                    method: 'eth_requestAccounts'
-                });
-                
-                const shortAddress = `\${accounts[0].substring(0, 6)}...\${accounts[0].substring(38)}`;
-                connectBtn.textContent = shortAddress;
-                connectBtn.classList.add('connected');
-                
-                // Event für Kontoänderungen
-                window.ethereum.on('accountsChanged', (accounts) => {
-                    if (accounts.length > 0) {
-                        const shortAddress = `\${accounts[0].substring(0, 6)}...\${accounts[0].substring(38)}`;
-                        connectBtn.textContent = shortAddress;
-                    } else {
-                        connectBtn.textContent = 'Connect Wallet';
-                        connectBtn.classList.remove('connected');
-                    }
-                });
-            } else {
-                alert('Please install MetaMask to connect your wallet!');
-            }
-        } catch (error) {
-            console.error('Error connecting wallet:', error);
-            alert('Error connecting wallet. Please try again.');
-        }
-    });
 }
 
 // Smooth Scroll
@@ -224,4 +142,19 @@ function initScrollAnimations() {
     });
     
     animatedElements.forEach(el => observer.observe(el));
+}
+
+// Mobile Navigation (falls benötigt)
+function initMobileNav() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', 
+                navMenu.classList.contains('active')
+            );
+        });
+    }
 }
