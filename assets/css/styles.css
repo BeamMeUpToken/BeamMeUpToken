@@ -248,6 +248,99 @@ body {
     text-shadow: var(--glow-shadow) rgba(255, 215, 0, 0.5);
 }
 
+<!-- Nach der Collection Section und vor der Community Section einfügen -->
+
+<!-- Whitelist Section -->
+<section id="whitelist" class="whitelist-section">
+    <h2 class="section-title">Whitelist Access</h2>
+    <div class="whitelist-container">
+        <div class="whitelist-info">
+            <div class="whitelist-card">
+                <i class="fas fa-scroll"></i>
+                <h3>Early Access</h3>
+                <p>Join the chosen ones for exclusive pre-mint access</p>
+                <div class="whitelist-status">
+                    <span class="spots">Spots Remaining: ???</span>
+                    <span class="status">Status: Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Roadmap Section -->
+<section id="roadmap" class="roadmap-section">
+    <h2 class="section-title">Ancient Timeline</h2>
+    <div class="roadmap-container">
+        <div class="roadmap-phase">
+            <div class="phase-marker">Phase I</div>
+            <div class="phase-content">
+                <h3>Mystery Reveal</h3>
+                <ul>
+                    <li>Whitelist Opening</li>
+                    <li>Community Building</li>
+                    <li>First NFT Reveals</li>
+                </ul>
+            </div>
+        </div>
+        <div class="roadmap-phase">
+            <div class="phase-marker">Phase II</div>
+            <div class="phase-content">
+                <h3>Ancient Knowledge</h3>
+                <ul>
+                    <li>Exclusive Content Access</li>
+                    <li>Special Events</li>
+                    <li>Community Rewards</li>
+                </ul>
+            </div>
+        </div>
+        <div class="roadmap-phase">
+            <div class="phase-marker">Phase III</div>
+            <div class="phase-content">
+                <h3>Power Activation</h3>
+                <ul>
+                    <li>Token Integration</li>
+                    <li>Staking Platform</li>
+                    <li>Holder Benefits</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <h2 class="section-title">Ancient Knowledge</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is BeamMeUp: Anunnaki Origins?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>A unique NFT collection featuring mysterious ancient beings, each with their own powers and stories.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How many NFTs will be available?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>285 unique NFTs across four rarity tiers: Legendary (10), Epic (25), Rare (50), and Common (200).</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How does the Mystery Mint work?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Each mint is a mystery until revealed. Your NFT's rarity and identity will be unveiled after minting.</p>
+            </div>
+        </div>
+    </div>
+</section>
 /* Community Section */
 .community {
     padding: 6rem 2rem;
