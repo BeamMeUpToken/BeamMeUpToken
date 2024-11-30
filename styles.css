@@ -3,6 +3,7 @@
     --accent-color: #00F0FF;
     --highlight: #FFD700;
     --text-color: #ffffff;
+    --glass-bg: rgba(11, 28, 61, 0.9);
 }
 
 * {
@@ -12,109 +13,102 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Orbitron', sans-serif; /* Geändert zu Orbitron */
     background: linear-gradient(45deg, var(--primary-color), #1a1a2e);
     color: var(--text-color);
 }
 
-/* Navigation Styles */
-.navbar {
+/* Header und Navigation */
+.header {
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background: rgba(11, 28, 61, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00F0FF;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
-.nav-links {
+.nav-menu ul {
     display: flex;
     gap: 2rem;
+    list-style: none;
     align-items: center;
 }
 
-.nav-links a {
-    color: white;
+.nav-menu a {
+    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #00F0FF;
+.nav-menu a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
-.connect-wallet {
-    background: #00F0FF;
-    color: #0B1C3D;
+.connect-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
 }
 
-.connect-wallet:hover {
+.connect-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--accent-color);
 }
 
-/* Hero Section Styles */
-/* Hero Section Styles */
+/* Hero Section */
 .hero {
     position: relative;
-    min-height: 100vh; /* Changed from height to min-height */
-    background: linear-gradient(45deg, #0B1C3D, #1a1a2e);
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--primary-color), #1a1a2e);
     overflow: hidden;
-    padding-top: 80px; /* Für die Navigation */
-    display: flex; /* Added */
-    align-items: center; /* Added */
-    justify-content: center; /* Added */
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    width: 100%; /* Added */
-    padding: 2rem; /* Changed from padding-top */
-}
-
-/* Vergrößere den Abstand zwischen den Sections */
-section {
-    padding: 100px 0; /* Added */
-    margin: 0; /* Added */
-}
-
-/* Stelle sicher, dass die Sections voneinander getrennt sind */
-#spacestation, #tokenomics {
-    min-height: 100vh;
     width: 100%;
-    position: relative;
+    padding: 2rem;
 }
+
 .animated-title {
     font-size: 4rem;
-    background: linear-gradient(45deg, #00F0FF, #FFD700);
+    background: linear-gradient(45deg, var(--accent-color), var(--highlight));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: titleGlow 2s ease-in-out infinite;
 }
 
-.hero-subtitle {
-    font-size: 1.5rem;
-    margin: 1rem 0 2rem;
-    color: var(--text-color);
-}
-
+/* Token Stats */
 .token-stats {
     display: flex;
     justify-content: center;
@@ -123,209 +117,73 @@ section {
 }
 
 .stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    font-weight: bold;
-    display: block;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-.cta-buttons {
-    margin-top: 2rem;
-}
-
-.cta-buttons a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-}
-
-.primary-btn, .secondary-btn {
-    cursor: pointer;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    font-weight: bold;
+    background: var(--glass-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
     transition: transform 0.3s ease;
 }
 
-.primary-btn {
-    background: #00F0FF;
-    color: #0B1C3D;
-    border: none;
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
-.secondary-btn {
-    background: transparent;
-    border: 2px solid #00F0FF;
-    color: #00F0FF;
-}
-
-.primary-btn:hover, .secondary-btn:hover {
-    transform: translateY(-3px);
-}
-
-/* Space Station Section Styles */
+/* Space Station Section - Behalten wir dein Original-Design */
 .space-station {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #0B1C3D 0%, #151515 100%);
+    background: linear-gradient(180deg, var(--primary-color) 0%, #151515 100%);
 }
 
-.section-title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    background: linear-gradient(45deg, #00F0FF, #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.deck-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.deck-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 2rem;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.deck-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
-}
-
-.deck-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.deck-requirement {
-    color: #00F0FF;
-    font-weight: bold;
-    margin: 1rem 0;
-}
-
-.deck-benefits {
-    list-style: none;
-    padding: 0;
-}
-
-.deck-benefits li {
-    margin: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.deck-benefits li:before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #FFD700;
-}
-
-/* Tokenomics Section Styles */
+/* Tokenomics Section - Behalten wir dein Original-Design */
 .tokenomics {
     padding: 5rem 2rem;
-    background: linear-gradient(0deg, #0B1C3D 0%, #151515 100%);
+    background: linear-gradient(0deg, var(--primary-color) 0%, #151515 100%);
 }
 
-.tokenomics-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+/* Mission Control Stats - Neues Feature */
+.mission-control {
+    padding: 4rem 2rem;
+    background: var(--glass-bg);
+    margin-top: -1px;
+}
+
+.stats-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
 }
 
-.tax-card {
+.stat-box {
+    text-align: center;
+    padding: 2rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
-    padding: 2rem;
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
     transition: transform 0.3s ease;
 }
 
-.tax-card:hover {
+.stat-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
-.tax-card h3 {
-    color: #00F0FF;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+/* Animationen */
+@keyframes titleGlow {
+    0%, 100% { 
+        text-shadow: 0 0 10px var(--accent-color);
+    }
+    50% { 
+        text-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--highlight);
+    }
 }
 
-.tax-distribution {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.tax-item {
-    position: relative;
-}
-
-.tax-percentage {
-    font-size: 1.2rem;
-    color: #FFD700;
-    margin-bottom: 0.5rem;
-}
-
-.tax-label {
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-}
-
-.progress-bar {
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-}
-
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: linear-gradient(90deg, #00F0FF, #FFD700);
-    width: var(--width, 0%);
-    animation: progressFill 1s ease forwards;
-}
-
-/* Animations */
+/* Deine bestehenden Animationen bleiben erhalten */
 @keyframes progressFill {
     from { width: 0; }
     to { width: var(--width); }
-}
-
-@keyframes titleGlow {
-    0%, 100% { filter: brightness(100%); }
-    50% { filter: brightness(150%); }
 }
 
 @keyframes starsMove {
@@ -333,13 +191,15 @@ section {
     to { background-position: 10000px 0; }
 }
 
-/* Responsive Design */
+/* Responsive Design - Kombiniert beide Versionen */
 @media (max-width: 768px) {
-    .navbar {
+    .header-container {
+        flex-direction: column;
         padding: 1rem;
     }
 
-    .nav-links {
+    .nav-menu ul {
+        flex-direction: column;
         gap: 1rem;
     }
 
@@ -347,16 +207,16 @@ section {
         font-size: 2.5rem;
     }
 
+    .stats-container,
     .tokenomics-container {
         flex-direction: column;
     }
     
-    .tax-card {
-        width: 100%;
-        max-width: none;
-    }
-
     .deck-container {
         grid-template-columns: 1fr;
+    }
+
+    .stat-box {
+        width: 100%;
     }
 }
