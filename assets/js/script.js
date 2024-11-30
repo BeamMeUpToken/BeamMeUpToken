@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialisiere alle Funktionen
     initParticleAnimation();
-    initProgressBars();
+    initMysteryCards();
     initSmoothScroll();
     initScrollAnimations();
     initHeaderScroll();
@@ -20,7 +20,7 @@ function initHeaderScroll() {
     });
 }
 
-// Partikel-Animation
+// Partikel-Animation für Hero Section
 function initParticleAnimation() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -78,33 +78,73 @@ function initParticleAnimation() {
     // Animation Loop
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
         particles.forEach(particle => {
             particle.update();
             particle.draw();
         });
-        
         requestAnimationFrame(animate);
     }
     
     animate();
 }
 
-// Progress Bars Animation
-function initProgressBars() {
-    const progressBars = document.querySelectorAll('.progress-bar');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const percentage = entry.target.getAttribute('data-percentage');
-                entry.target.style.setProperty('--width', `\${percentage}%`);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+// Mystery Cards Initialization
+function initMysteryCards() {
+    // Legendary Tier (10 cards)
+    createMysteryCards('legendary', 10);
+    // Epic Tier (25 cards)
+    createMysteryCards('epic', 25);
+    // Rare Tier (50 cards)
+    createMysteryCards('rare', 50);
+    // Common Tier (200 cards)
+    createMysteryCards('common', 200);
+}
 
-    progressBars.forEach(bar => observer.observe(bar));
+// Create Mystery Cards
+function createMysteryCards(tier, count) {
+    const container = document.querySelector(`.mystery-tier.\${tier} .nft-grid`);
+    if (!container) return;
+
+    for (let i = 1; i <= count; i++) {
+        const card = document.createElement('div');
+        card.className = `mystery-card \${tier}`;
+        
+        // Calculate the overall number based on tier
+        let number = calculateNftNumber(tier, i);
+        
+        card.innerHTML = `
+            <div class="glow-effect"></div>
+            <div class="mystery-content">
+                <span class="mystery-number">#\${number.toString().padStart(3, '0')}</span>
+                <div class="mystery-status">
+                    <span class="status-label">Awaiting Discovery</span>
+                    <span class="mint-address">---</span>
+                </div>
+            </div>
+        `;
+        
+        // Add hover animation
+        card.addEventListener('mouseenter', () => {
+            card.querySelector('.glow-effect').style.animationDuration = '1.5s';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.querySelector('.glow-effect').style.animationDuration = '3s';
+        });
+        
+        container.appendChild(card);
+    }
+}
+
+// Calculate NFT number based on tier
+function calculateNftNumber(tier, index) {
+    switch(tier) {
+        case 'legendary': return index;
+        case 'epic': return 10 + index;
+        case 'rare': return 35 + index;
+        case 'common': return 85 + index;
+        default: return index;
+    }
 }
 
 // Smooth Scroll
@@ -126,7 +166,7 @@ function initSmoothScroll() {
 // Scroll Animations
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
-        '.deck-card, .tax-card, .stat-box, .social-card'
+        '.mystery-card, .social-card, .mystery-mint-banner'
     );
     
     const observer = new IntersectionObserver((entries) => {
@@ -144,7 +184,7 @@ function initScrollAnimations() {
     animatedElements.forEach(el => observer.observe(el));
 }
 
-// Mobile Navigation (falls benötigt)
+// Mobile Navigation
 function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
