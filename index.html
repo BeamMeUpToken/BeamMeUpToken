@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BeamMeUp Token - The Next Generation of DeFi with AI Integration">
+    <meta name="keywords" content="BeamMeUp, crypto, token, DeFi, blockchain, AI">
+    <meta property="og:title" content="BeamMeUp Token">
+    <meta property="og:description" content="Journey to the Next Generation of DeFi">
+    <meta property="og:type" content="website">
+    
     <title>BeamMeUp Token - Next Generation Crypto</title>
-    <!-- Google Fonts - Orbitron für futuristisches Design -->
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome für Icons -->
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header Navigation -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">BeamMeUp</div>
+            <div class="logo">
+                <a href="#home">BeamMeUp</a>
+            </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -24,7 +37,7 @@
                     <li><a href="#community">Community</a></li>
                 </ul>
             </nav>
-            <button class="connect-btn">Connect Wallet</button>
+            <button class="connect-btn" id="connectWallet">Connect Wallet</button>
         </div>
     </header>
 
@@ -46,8 +59,12 @@
                 </div>
             </div>
             <div class="cta-buttons">
-                <a href="#" class="primary-btn glow-effect">Buy \$BEAM</a>
-                <a href="#" class="secondary-btn">Join Community</a>
+                <a href="https://pancakeswap.finance" target="_blank" rel="noopener" class="primary-btn glow-effect">
+                    Buy \$BEAM
+                </a>
+                <a href="https://t.me/beammeuptoken" target="_blank" rel="noopener" class="secondary-btn">
+                    Join Community
+                </a>
             </div>
         </div>
     </section>
@@ -56,16 +73,19 @@
     <section class="mission-control">
         <div class="stats-container">
             <div class="stat-box">
+                <i class="fas fa-rocket"></i>
                 <h3>Active Missions</h3>
-                <p class="counter">0</p>
+                <p class="counter" data-target="150">0</p>
             </div>
             <div class="stat-box">
+                <i class="fas fa-users"></i>
                 <h3>Crew Members</h3>
-                <p class="counter">0</p>
+                <p class="counter" data-target="500">0</p>
             </div>
             <div class="stat-box">
+                <i class="fas fa-chart-line"></i>
                 <h3>Total Beam-Ups</h3>
-                <p class="counter">0</p>
+                <p class="counter" data-target="1000">0</p>
             </div>
         </div>
     </section>
@@ -76,7 +96,9 @@
         <div class="deck-container">
             <!-- Bridge Deck -->
             <div class="deck-card bridge">
-                <div class="deck-icon">🚀</div>
+                <div class="deck-icon">
+                    <i class="fas fa-space-shuttle"></i>
+                </div>
                 <h3>Bridge Deck</h3>
                 <p class="deck-requirement">2% Holdings</p>
                 <ul class="deck-benefits">
@@ -89,7 +111,9 @@
 
             <!-- Engineering Deck -->
             <div class="deck-card engineering">
-                <div class="deck-icon">⚡</div>
+                <div class="deck-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
                 <h3>Engineering Deck</h3>
                 <p class="deck-requirement">1% Holdings</p>
                 <ul class="deck-benefits">
@@ -102,7 +126,9 @@
 
             <!-- Science Deck -->
             <div class="deck-card science">
-                <div class="deck-icon">🔬</div>
+                <div class="deck-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
                 <h3>Science Deck</h3>
                 <p class="deck-requirement">0.5% Holdings</p>
                 <ul class="deck-benefits">
@@ -115,7 +141,9 @@
 
             <!-- Observation Deck -->
             <div class="deck-card observation">
-                <div class="deck-icon">👁️</div>
+                <div class="deck-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
                 <h3>Observation Deck</h3>
                 <p class="deck-requirement">Any Holdings</p>
                 <ul class="deck-benefits">
@@ -188,7 +216,35 @@
         </div>
     </section>
 
-    <!-- JavaScript -->
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <h2 class="section-title">Join Our Community</h2>
+        <div class="community-container">
+            <div class="social-links">
+                <a href="https://t.me/beammeuptoken" target="_blank" rel="noopener" class="social-card">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://twitter.com/beammeuptoken" target="_blank" rel="noopener" class="social-card">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://discord.gg/beammeup" target="_blank" rel="noopener" class="social-card">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BeamMeUp Token. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
