@@ -1,17 +1,19 @@
-/* Erweiterte Variablen */
+/* Neue Farbpalette und Grundeinstellungen */
 :root {
-    --primary-color: #0B1C3D;
-    --primary-dark: #081632;
-    --accent-color: #00F0FF;
-    --accent-dark: #00D1E0;
-    --highlight: #FFD700;
+    --primary-color: #000000;
+    --primary-dark: #0a0a0a;
+    --accent-color: #FFD700;
+    --accent-glow: #FFC125;
+    --highlight: #F0E68C;
     --text-color: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.8);
-    --glass-bg: rgba(11, 28, 61, 0.9);
-    --glass-bg-light: rgba(11, 28, 61, 0.7);
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --transition-speed: 0.3s;
+    --glass-bg: rgba(0, 0, 0, 0.85);
+    --glass-bg-light: rgba(0, 0, 0, 0.7);
+    --card-bg: rgba(10, 10, 10, 0.9);
+    --gold-gradient: linear-gradient(45deg, #FFD700, #FDB931);
+    --dark-gradient: linear-gradient(135deg, #000000, #1a1a1a);
     --glow-shadow: 0 0 15px;
+    --transition-speed: 0.3s;
 }
 
 /* Basis-Styles */
@@ -28,7 +30,10 @@ html {
 
 body {
     font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--primary-dark);
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%),
+        var(--dark-gradient);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -46,7 +51,7 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .header-container {
@@ -63,7 +68,7 @@ body {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 700;
-    text-shadow: var(--glow-shadow) var(--accent-color);
+    text-shadow: var(--glow-shadow) var(--accent-glow);
 }
 
 .nav-menu ul {
@@ -81,7 +86,7 @@ body {
 
 .nav-menu a:hover {
     color: var(--accent-color);
-    text-shadow: var(--glow-shadow) var(--accent-color);
+    text-shadow: var(--glow-shadow) var(--accent-glow);
 }
 
 .connect-btn {
@@ -96,9 +101,9 @@ body {
 }
 
 .connect-btn.disabled {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.2);
+    color: rgba(255, 215, 0, 0.5);
     cursor: not-allowed;
 }
 
@@ -111,6 +116,7 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
 }
 
 .hero-content {
@@ -122,7 +128,7 @@ body {
 .animated-title {
     font-size: 4rem;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, var(--accent-color), var(--highlight));
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: titleGlow 2s ease-in-out infinite;
@@ -145,6 +151,7 @@ body {
     background: var(--glass-bg);
     padding: 1.5rem 2.5rem;
     border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
     backdrop-filter: blur(8px);
 }
 
@@ -153,6 +160,7 @@ body {
     color: var(--accent-color);
     display: block;
     margin-bottom: 0.5rem;
+    text-shadow: var(--glow-shadow) rgba(255, 215, 0, 0.5);
 }
 
 /* Mystery Collection Styles */
@@ -165,9 +173,10 @@ body {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 4rem;
-    background: linear-gradient(45deg, var(--accent-color), var(--highlight));
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: var(--glow-shadow) rgba(255, 215, 0, 0.3);
 }
 
 .mystery-mint-banner {
@@ -177,7 +186,7 @@ body {
     text-align: center;
     margin-bottom: 4rem;
     border: 2px solid var(--accent-color);
-    animation: glow 2s infinite alternate;
+    animation: goldGlow 2s infinite alternate;
 }
 
 .mystery-chances {
@@ -192,54 +201,32 @@ body {
     padding: 1rem 2rem;
     border-radius: 10px;
     background: var(--glass-bg-light);
-    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-.chance-item .rarity {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-/* Rarity Colors */
-.legendary .rarity { color: var(--highlight); }
-.epic .rarity { color: #B900FF; }
-.rare .rarity { color: #0088FF; }
-.common .rarity { color: #00FF88; }
+/* Rarity Colors - Gold Variations */
+.legendary .rarity { color: var(--accent-color); }
+.epic .rarity { color: #FFC125; }
+.rare .rarity { color: #F0E68C; }
+.common .rarity { color: #DAA520; }
 
 /* Mystery Grid */
-.mystery-tier {
-    margin-bottom: 4rem;
-}
-
-.mystery-tier h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-}
-
-.nft-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .mystery-card {
     aspect-ratio: 1;
     border-radius: 15px;
     position: relative;
-    background: var(--glass-bg);
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 215, 0, 0.3);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
 }
 
 .glow-effect {
     position: absolute;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
     animation: glowSweep 3s infinite;
 }
 
@@ -251,14 +238,14 @@ body {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .mystery-number {
     font-size: 1.5rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
-    text-shadow: 0 0 10px var(--accent-color);
+    text-shadow: var(--glow-shadow) rgba(255, 215, 0, 0.5);
 }
 
 /* Community Section */
@@ -281,13 +268,15 @@ body {
     text-align: center;
     text-decoration: none;
     color: var(--text-color);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     transition: all var(--transition-speed);
     min-width: 200px;
 }
 
 .social-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
 .social-card i {
@@ -301,13 +290,13 @@ body {
     background: var(--primary-dark);
     padding: 2rem;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 /* Animations */
 @keyframes titleGlow {
-    0%, 100% { text-shadow: 0 0 20px rgba(0, 240, 255, 0.5); }
-    50% { text-shadow: 0 0 40px rgba(0, 240, 255, 0.8); }
+    0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+    50% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
 }
 
 @keyframes glowSweep {
@@ -315,9 +304,20 @@ body {
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes glow {
-    from { box-shadow: 0 0 10px var(--accent-color); }
-    to { box-shadow: 0 0 20px var(--accent-color); }
+@keyframes goldGlow {
+    from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    to { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+/* Hover Effects */
+.mystery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.mystery-card:hover .glow-effect {
+    animation-duration: 1.5s;
 }
 
 /* Responsive Design */
