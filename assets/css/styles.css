@@ -23,6 +23,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -32,9 +33,56 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Verbesserte Header-Styles */
+/* Allgemeine Utility-Klassen */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--accent-color), var(--highlight));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Verbesserte Zugänglichkeit */
+a:focus, 
+button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Verbesserte Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dark);
+}
+
+/* Header und Navigation */
 .header {
     position: fixed;
     width: 100%;
@@ -60,20 +108,24 @@ body {
     align-items: center;
 }
 
+/* Logo Styles */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
+}
+
+.logo a {
     color: var(--accent-color);
-    text-shadow: var(--glow-shadow) var(--accent-color);
     text-decoration: none;
+    text-shadow: var(--glow-shadow) var(--accent-color);
     transition: transform var(--transition-speed);
 }
 
-.logo:hover {
+.logo a:hover {
     transform: scale(1.05);
 }
 
-/* Verbesserte Navigation */
+/* Navigation Menu */
 .nav-menu ul {
     display: flex;
     list-style: none;
@@ -110,7 +162,7 @@ body {
     text-shadow: var(--glow-shadow) var(--accent-color);
 }
 
-/* Verbesserter Connect Button */
+/* Connect Button */
 .connect-btn {
     background: transparent;
     border: 2px solid var(--accent-color);
@@ -125,7 +177,22 @@ body {
     overflow: hidden;
 }
 
-.connect-btn::before {
+/* Disabled Connect Button */
+.connect-btn.disabled {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+}
+
+.connect-btn.disabled:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    transform: none;
+}
+
+/* Active Connect Button (für später) */
+.connect-btn:not(.disabled)::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -139,13 +206,54 @@ body {
     border-radius: 50%;
 }
 
-.connect-btn:hover::before {
+.connect-btn:not(.disabled):hover::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.connect-btn:hover {
+.connect-btn:not(.disabled):hover {
     color: var(--primary-color);
     box-shadow: var(--glow-shadow) var(--accent-color);
+}
+
+/* Mobile Navigation Toggle (für Responsive Design) */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        padding: 1rem;
+    }
+
+    .nav-menu.active {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+    }
 }
 
 /* Hero Section */
@@ -243,6 +351,50 @@ body {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.primary-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.secondary-btn:hover {
+    background: rgba(0, 240, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.glow-effect {
+    animation: buttonGlow 2s infinite alternate;
 }
 
 /* Mission Control Section */
@@ -346,6 +498,10 @@ body {
     margin-bottom: 1.5rem;
     text-align: center;
     color: var(--accent-color);
+}
+
+.deck-icon i {
+    filter: drop-shadow(0 0 10px var(--accent-color));
 }
 
 .deck-card h3 {
@@ -494,6 +650,8 @@ body {
     transition: all var(--transition-speed);
     border: 1px solid rgba(255, 255, 255, 0.1);
     min-width: 200px;
+    flex: 1;
+    max-width: 300px;
 }
 
 .social-card:hover {
@@ -506,11 +664,13 @@ body {
     font-size: 3rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--accent-color));
 }
 
 .social-card span {
     display: block;
     font-size: 1.2rem;
+    margin-top: 0.5rem;
 }
 
 /* Footer */
@@ -616,6 +776,7 @@ body {
 
     .social-card {
         width: 100%;
+        max-width: none;
     }
 }
 
@@ -634,5 +795,37 @@ body {
 
     .tax-card {
         min-width: 100%;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .particle-animation,
+    .stars,
+    .connect-btn,
+    .social-links {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .glass-effect {
+        background: none;
+        backdrop-filter: none;
+        border: 1px solid #ccc;
     }
 }
